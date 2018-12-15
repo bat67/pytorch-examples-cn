@@ -20,7 +20,7 @@ PyTorch主要是提供了两个核心的功能特性：
 
 ## 目录
 
-* [热身：使用NumPy]()
+* [热身：使用NumPy](热身：使用NumPy/README.md)
 * [PyTorch：张量(Tensors)]()
 * [PyTorch：自动求导(Autograd)]()
 * [PyTorch：定义自己的自动求导函数]()
