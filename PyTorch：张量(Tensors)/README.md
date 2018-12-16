@@ -34,7 +34,8 @@ for t in range(500):
     h_relu = h.clamp(min=0)
     y_pred = h_relu.mm(w2)
 
-    # 计算并输出loss；loss是存储在PyTorch的tensor中的标量，维度是()（零维标量）；我们使用loss.item()得到tensor中的纯python数值。
+    # 计算并输出loss；loss是存储在PyTorch的tensor中的标量，维度是()（零维标量）；
+    # 我们使用loss.item()得到tensor中的纯python数值。
     loss = (y_pred - y).pow(2).sum()
     print(t, loss.item())
 
