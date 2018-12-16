@@ -1,6 +1,6 @@
 # 用例子学习PyTorch
 
-> [pytorch-examples]() 中文翻译版，部分意译，部分改动
+> [Learning PyTorch with Examples](https://pytorch.org/tutorials/beginner/pytorch_with_examples.html) 中文翻译版，部分意译，部分改动
 
 > 翻译不对的地方拜托大家指出~
 
@@ -21,11 +21,11 @@ PyTorch主要是提供了两个核心的功能特性：
 ## 目录
 
 * [热身：使用NumPy](热身：使用NumPy/README.md)
-* [PyTorch：张量(Tensors)]()
-* [PyTorch：自动求导(Autograd)]()
-* [PyTorch：定义自己的自动求导函数]()
-* [TensorFlow：静态图]()
-* [PyTorch：神经网络模块nn]()
-* [PyTorch：优化模块optim]()
-* [PyTorch：定制神经网络nn模块]()
-* [PyTorch：控制流和参数共享]()
+* [PyTorch：张量(Tensors)](PyTorch：张量(Tensors)/README.md)
+* [PyTorch：自动求导(Autograd)]
+* [PyTorch：定义自己的自动求导函数]
+* [TensorFlow：静态图]
+* [PyTorch：神经网络模块nn]
+* [PyTorch：优化模块optim]
+* [PyTorch：定制神经网络nn模块]
+* [PyTorch：控制流和参数共享]
