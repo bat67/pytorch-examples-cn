@@ -25,7 +25,7 @@ PyTorch主要是提供了两个核心的功能特性：
 * [PyTorch：自动求导(Autograd)](PyTorch：自动求导(Autograd)/README.md)
 * [PyTorch：定义自己的自动求导函数](PyTorch：定义自己的自动求导函数/README.md)
 * [TensorFlow：静态图](TensorFlow：静态图/README.md)
-* [PyTorch：神经网络模块nn]
+* [PyTorch：神经网络模块nn](PyTorch：神经网络模块nn/README.md)
 * [PyTorch：优化模块optim]
 * [PyTorch：定制神经网络nn模块]
 * [PyTorch：控制流和参数共享]
