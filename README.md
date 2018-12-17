@@ -20,11 +20,19 @@ PyTorch主要是提供了两个核心的功能特性：
 
 ## 目录
 
+### 张量(Tensors)
+
 * [热身：使用NumPy](热身：使用NumPy/README.md)
 * [PyTorch：张量(Tensors)](PyTorch：张量(Tensors)/README.md)
+
+### 自动求导(Autograd)
+
 * [PyTorch：自动求导(Autograd)](PyTorch：自动求导(Autograd)/README.md)
 * [PyTorch：定义自己的自动求导函数](PyTorch：定义自己的自动求导函数/README.md)
 * [TensorFlow：静态图](TensorFlow：静态图/README.md)
+
+### `nn`模块(`nn` module)
+
 * [PyTorch：神经网络模块nn](PyTorch：神经网络模块nn/README.md)
 * [PyTorch：优化模块optim]
 * [PyTorch：定制神经网络nn模块]
