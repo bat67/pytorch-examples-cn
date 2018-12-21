@@ -34,6 +34,5 @@ PyTorch主要是提供了两个核心的功能特性：
 ### `nn`模块(`nn` module)
 
 * [PyTorch：神经网络模块nn](PyTorch：神经网络模块nn/README.md)
-* [PyTorch：优化模块optim]
 * [PyTorch：定制神经网络nn模块]
-* [PyTorch：控制流和参数共享]
+* [PyTorch：控制流和参数共享]* [PyTorch：优化模块optim](PyTorch：优化模块optim/README.md)
