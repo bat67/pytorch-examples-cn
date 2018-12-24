@@ -1,14 +1,14 @@
 import torch
 
-# N is batch size; D_in is input dimension;
-# H is hidden dimension; D_out is output dimension.
+# N是批大小；D是输入维度
+# H是隐藏层维度；D_out是输出维度
 N, D_in, H, D_out = 64, 1000, 100, 10
 
-# Create random Tensors to hold inputs and outputs.
+# 产生随机输入和输出张量
 x = torch.randn(N, D_in)
 y = torch.randn(N, D_out)
 
-# Use the nn package to define our model and loss function.
+# 使用nn包定义模型和损失函数
 model = torch.nn.Sequential(
           torch.nn.Linear(D_in, H),
           torch.nn.ReLU(),
@@ -16,27 +16,27 @@ model = torch.nn.Sequential(
         )
 loss_fn = torch.nn.MSELoss(reduction='sum')
 
-# Use the optim package to define an Optimizer that will update the weights of
-# the model for us. Here we will use Adam; the optim package contains many other
-# optimization algoriths. The first argument to the Adam constructor tells the
-# optimizer which Tensors it should update.
+# 使用optim包定义优化器（Optimizer）。Optimizer将会为我们更新模型的权重。
+# 这里我们使用Adam优化方法；optim包还包含了许多别的优化算法。
+# Adam构造函数的第一个参数告诉优化器应该更新哪些张量。
 learning_rate = 1e-4
 optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+
 for t in range(500):
-    # Forward pass: compute predicted y by passing x to the model.
+
+    # 前向传播：通过像模型输入x计算预测的y
     y_pred = model(x)
 
-    # Compute and print loss.
+    # 计算并打印loss
     loss = loss_fn(y_pred, y)
     print(t, loss.item())
     
-    # Before the backward pass, use the optimizer object to zero all of the
-    # gradients for the Tensors it will update (which are the learnable weights
-    # of the model)
+    # 在反向传播之前，使用optimizer将它要更新的所有张量的梯度清零(这些张量是模型可学习的权重)
     optimizer.zero_grad()
 
-    # Backward pass: compute gradient of the loss with respect to model parameters
+    # 反向传播：根据模型的参数计算loss的梯度
     loss.backward()
 
-    # Calling the step function on an Optimizer makes an update to its parameters
+    # 调用Optimizer的step函数使它所有参数更新
     optimizer.step()
+    
