@@ -1,7 +1,6 @@
 # PyTorch：神经网络模块nn
 
 
-
 计算图和autograd是十分强大的工具，可以定义复杂的操作并自动求导；然而对于大规模的网络，autograd太过于底层。
 
 在构建神经网络时，我们经常考虑将计算安排成**层**，其中一些具有**可学习的参数**，它们将在学习过程中进行优化。
@@ -17,62 +16,58 @@ TensorFlow里，有类似[Keras](https://github.com/fchollet/keras)，[TensorFlo
 # 可运行代码见本文件夹中的 two_layer_net_nn.py
 import torch
 
-device = torch.device('cpu')
-# device = torch.device('cuda') # Uncomment this to run on GPU
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
-# N is batch size; D_in is input dimension;
-# H is hidden dimension; D_out is output dimension.
+# N是批大小；D是输入维度
+# H是隐藏层维度；D_out是输出维度
 N, D_in, H, D_out = 64, 1000, 100, 10
 
-# Create random Tensors to hold inputs and outputs
+# 产生输入和输出随机张量
 x = torch.randn(N, D_in, device=device)
 y = torch.randn(N, D_out, device=device)
 
-# Use the nn package to define our model as a sequence of layers. nn.Sequential
-# is a Module which contains other Modules, and applies them in sequence to
-# produce its output. Each Linear Module computes output from input using a
-# linear function, and holds internal Tensors for its weight and bias.
-# After constructing the model we use the .to() method to move it to the
-# desired device.
+
+# 使用nn包将我们的模型定义为一系列的层。
+# nn.Sequential是包含其他模块的模块，并按顺序应用这些模块来产生其输出。
+# 每个线性模块使用线性函数从输入计算输出，并保存其内部的权重和偏差张量。
+# 在构造模型之后，我们使用.to()方法将其移动到所需的设备。
 model = torch.nn.Sequential(
             torch.nn.Linear(D_in, H),
             torch.nn.ReLU(),
             torch.nn.Linear(H, D_out),
         ).to(device)
 
-# The nn package also contains definitions of popular loss functions; in this
-# case we will use Mean Squared Error (MSE) as our loss function. Setting
-# reduction='sum' means that we are computing the *sum* of squared errors rather
-# than the mean; this is for consistency with the examples above where we
-# manually compute the loss, but in practice it is more common to use mean
-# squared error as a loss by setting reduction='elementwise_mean'.
+
+# nn包还包含常用的损失函数的定义；
+# 在这种情况下，我们将使用平均平方误差(MSE)作为我们的损失函数。
+# 设置reduction='sum'，表示我们计算的是平方误差的“和”，而不是平均值;
+# 这是为了与前面我们手工计算损失的例子保持一致，
+# 但是在实践中，通过设置reduction='elementwise_mean'来使用均方误差作为损失更为常见。
 loss_fn = torch.nn.MSELoss(reduction='sum')
 
 learning_rate = 1e-4
 for t in range(500):
-    # Forward pass: compute predicted y by passing x to the model. Module objects
-    # override the __call__ operator so you can call them like functions. When
-    # doing so you pass a Tensor of input data to the Module and it produces
-    # a Tensor of output data.
-    y_pred = model(x)
 
-    # Compute and print loss. We pass Tensors containing the predicted and true
-    # values of y, and the loss function returns a Tensor containing the loss.
+    # 前向传播：通过向模型传入x计算预测的y。
+    # 模块对象重载了__call__运算符，所以可以像函数那样调用它们。
+    # 这么做相当于向模块传入了一个张量，然后它返回了一个输出张量。
+    y_pred = model(x)
+    
+    # 计算并打印损失。我们传递包含y的预测值和真实值的张量，损失函数返回包含损失的张量。
     loss = loss_fn(y_pred, y)
     print(t, loss.item())
     
-    # Zero the gradients before running the backward pass.
+    # 反向传播之前清零梯度
     model.zero_grad()
 
-    # Backward pass: compute gradient of the loss with respect to all the learnable
-    # parameters of the model. Internally, the parameters of each Module are stored
-    # in Tensors with requires_grad=True, so this call will compute gradients for
-    # all learnable parameters in the model.
+    # 反向传播：计算模型的损失对所有可学习参数的导数（梯度）。
+    # 在内部，每个模块的参数存储在requires_grad=True的张量中，
+    # 因此这个调用将计算模型中所有可学习参数的梯度。
     loss.backward()
 
-    # Update the weights using gradient descent. Each parameter is a Tensor, so
-    # we can access its data and gradients like we did before.
+    # 使用梯度下降更新权重。
+    # 每个参数都是张量，所以我们可以像我们以前那样可以得到它的数值和梯度
     with torch.no_grad():
         for param in model.parameters():
-        param.data -= learning_rate * param.grad
+            param.data -= learning_rate * param.grad
 ```
