@@ -4,8 +4,7 @@ import torch
 class DynamicNet(torch.nn.Module):
     def __init__(self, D_in, H, D_out):
         """
-        In the constructor we construct three nn.Linear instances that we will use
-        in the forward pass.
+        在构造函数中，我们构造了三个nn.Linear实例，它们将在前向传播时被使用。
         """
         super(DynamicNet, self).__init__()
         self.input_linear = torch.nn.Linear(D_in, H)
@@ -14,17 +13,11 @@ class DynamicNet(torch.nn.Module):
 
     def forward(self, x):
         """
-        For the forward pass of the model, we randomly choose either 0, 1, 2, or 3
-        and reuse the middle_linear Module that many times to compute hidden layer
-        representations.
-
-        Since each forward pass builds a dynamic computation graph, we can use normal
-        Python control-flow operators like loops or conditional statements when
-        defining the forward pass of the model.
-
-        Here we also see that it is perfectly safe to reuse the same Module many
-        times when defining a computational graph. This is a big improvement from Lua
-        Torch, where each Module could be used only once.
+        对于模型的前向传播，我们随机选择0、1、2、3，并重用了多次计算隐藏层的middle_linear模块。
+        
+        由于每个前向传播构建一个动态计算图，我们可以在定义模型的前向传播时使用常规Python控制流运算符，如循环或条件语句。
+        
+        在这里，我们还看到，在定义计算图形时多次重用同一个模块是完全安全的。这是Lua Torch的一大改进，因为Lua Torch中每个模块只能使用一次。
         """
         h_relu = self.input_linear(x).clamp(min=0)
         for _ in range(random.randint(0, 3)):
@@ -33,32 +26,31 @@ class DynamicNet(torch.nn.Module):
         return y_pred
 
 
-# N is batch size; D_in is input dimension;
-# H is hidden dimension; D_out is output dimension.
+# N是批大小；D是输入维度
+# H是隐藏层维度；D_out是输出维度
 N, D_in, H, D_out = 64, 1000, 100, 10
 
-# Create random Tensors to hold inputs and outputs.
+# 产生输入和输出随机张量
 x = torch.randn(N, D_in)
 y = torch.randn(N, D_out)
 
-# Construct our model by instantiating the class defined above
+# 实例化上面定义的类来构造我们的模型
 model = DynamicNet(D_in, H, D_out)
 
-# Construct our loss function and an Optimizer. Training this strange model with
-# vanilla stochastic gradient descent is tough, so we use momentum
+# 构造我们的损失函数（loss function）和优化器（Optimizer）。
+# 用平凡的随机梯度下降训练这个奇怪的模型是困难的，所以我们使用了momentum方法。
 criterion = torch.nn.MSELoss(reduction='sum')
 optimizer = torch.optim.SGD(model.parameters(), lr=1e-4, momentum=0.9)
 for t in range(500):
-    # Forward pass: Compute predicted y by passing x to the model
+    
+    # 前向传播：通过向模型传入x计算预测的y。
     y_pred = model(x)
 
-    # Compute and print loss
+    # 计算并打印损失
     loss = criterion(y_pred, y)
     print(t, loss.item())
 
-    # Zero gradients, perform a backward pass, and update the weights.
+    # 清零梯度，反向传播，更新权重 
     optimizer.zero_grad()
     loss.backward()
     optimizer.step()
-
-
