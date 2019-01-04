@@ -24,11 +24,12 @@ class DynamicNet(torch.nn.Module):
 
     def forward(self, x):
         """
-        对于模型的前向传播，我们随机选择0、1、2、3，并重用了多次计算隐藏层的middle_linear模块。
-        
-        由于每个前向传播构建一个动态计算图，我们可以在定义模型的前向传播时使用常规Python控制流运算符，如循环或条件语句。
-        
-        在这里，我们还看到，在定义计算图形时多次重用同一个模块是完全安全的。这是Lua Torch的一大改进，因为Lua Torch中每个模块只能使用一次。
+        对于模型的前向传播，我们随机选择0、1、2、3，
+        并重用了多次计算隐藏层的middle_linear模块。
+        由于每个前向传播构建一个动态计算图，
+        我们可以在定义模型的前向传播时使用常规Python控制流运算符，如循环或条件语句。
+        在这里，我们还看到，在定义计算图形时多次重用同一个模块是完全安全的。
+        这是Lua Torch的一大改进，因为Lua Torch中每个模块只能使用一次。
         """
         h_relu = self.input_linear(x).clamp(min=0)
         for _ in range(random.randint(0, 3)):
