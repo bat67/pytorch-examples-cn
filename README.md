@@ -28,7 +28,7 @@ PyTorch主要是提供了两个核心的功能特性：
 ### 自动求导(Autograd)
 
 * [PyTorch：自动求导(Autograd)](https://github.com/bat67/pytorch-examples-cn/tree/master/PyTorch%EF%BC%9A自动求导(Autograd))
-* [PyTorch：定义自己的自动求导函数（almost）](https://github.com/bat67/pytorch-examples-cn/tree/master/PyTorch%EF%BC%9A定义自己的自动求导函数)
+* [PyTorch：定义自己的自动求导函数](https://github.com/bat67/pytorch-examples-cn/tree/master/PyTorch%EF%BC%9A定义自己的自动求导函数)
 * [TensorFlow：静态图](https://github.com/bat67/pytorch-examples-cn/tree/master/TensorFlow%EF%BC%9A静态图)
 
 ### `nn`模块(`nn` module)
