@@ -39,7 +39,7 @@ PyTorch主要是提供了两个核心的功能特性：
 * [PyTorch：控制流和参数共享](PyTorch：控制流和参数共享/README.md)
 
 
->## [版权信息](license.md)
+>### [版权信息](license.md)
 >
 >除非额外说明，本仓库的所有公开文档均遵循 [署名-非商业性使用-相同方式共享 3.0 中国大陆 (CC BY-NC-SA 3.0 CN)](https://creativecommons.org/licenses/by-nc-sa/3.0/cn/) 许可协议。任何人都可以自由地分享、修改本作品，但必须遵循如下条件：
 >
