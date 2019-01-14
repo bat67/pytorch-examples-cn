@@ -9,7 +9,8 @@
     - [3.1、张量(Tensors)](#31张量tensors)
     - [3.2、自动求导(Autograd)](#32自动求导autograd)
     - [3.3、`nn`模块(`nn` module)](#33nn模块nn-module)
-  - [4、版权信息](#4版权信息)
+  - [4、类似项目](#4类似项目)
+  - [5、版权信息](#5版权信息)
 
 ## 1、简介
 这个repo通过自洽的示例介绍了PyTorch的基本概念。
@@ -46,7 +47,14 @@ PyTorch主要是提供了两个核心的功能特性：
 * [PyTorch：控制流和参数共享](https://github.com/bat67/pytorch-examples-cn/tree/master/PyTorch%EF%BC%9A控制流和参数共享)
 
 
-## 4、版权信息
+## 4、类似项目
+
+* [PyTorch 教程、例子和书籍](https://github.com/bat67/pytorch-tutorials-examples-and-books)
+* [PyTorch 深度学习：60分钟入门与实战](https://github.com/bat67/Deep-Learning-with-PyTorch-A-60-Minute-Blitz-cn)
+* [用例子学习 PyTorch](https://github.com/bat67/pytorch-examples-cn)
+
+
+## 5、版权信息
 
 除非额外说明，本仓库的所有公开文档均遵循 [署名-非商业性使用-相同方式共享 3.0 中国大陆 (CC BY-NC-SA 3.0 CN)](https://creativecommons.org/licenses/by-nc-sa/3.0/cn/) 许可协议。任何人都可以自由地分享、修改本作品，但必须遵循如下条件：
 
