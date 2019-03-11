@@ -2,6 +2,8 @@
 
 > [Learning PyTorch with Examples](https://pytorch.org/tutorials/beginner/pytorch_with_examples.html) 中文翻译版，翻译不对的地方拜托大家指出~
 
+>**对PyTorch感兴趣的童鞋欢迎看这个**-->[PyTorch教程、例子和书籍合集](https://github.com/bat67/pytorch-tutorials-examples-and-books)
+
 - [用例子学习PyTorch](#用例子学习pytorch)
   - [1、简介](#1简介)
   - [2、环境](#2环境)
